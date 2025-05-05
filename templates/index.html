@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <title>Talk2PDF</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/svg+xml" href="./logo.svg" />
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+  <div id="uploadContainer" class="flex flex-col items-center justify-center p-8 w-full h-full bg-base-100">
+    <svg width="450" height="150" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <g transform="translate(100,50)">
+        <rect width="60" height="80" rx="10" ry="10" fill="hsl(var(--b3))" stroke="#ff3b30" stroke-width="4"/>
+        <text x="30" y="50" font-family="Arial, sans-serif" font-size="20" fill="#ff3b30" text-anchor="middle" font-weight="bold">PDF</text>
+        <circle cx="60" cy="70" r="10" fill="#4facfe" />
+        <circle cx="65" cy="75" r="3" fill="white" />
+      </g>
+      <text x="180" y="100" font-family="Poppins, sans-serif" font-size="40" fill="url(#textGrad)" font-weight="600">
+        Talk2PDF
+      </text>
+    </svg>
+
+    <div class="bg-base-200 p-6 rounded-lg shadow-lg w-full max-w-lg border-2 border-primary">
+      <header class="text-center mb-6"></header>
+
+      <div id="uploadSection" class="text-center mb-4">
+        <div id="status" class="text-sm text-base-content/70 mb-4 flex items-center justify-center gap-2">
+          <span id="statusText">Please upload a PDF to begin.</span>
+          <span id="loader" class="loading loading-spinner loading-sm hidden"></span>
+        </div>
+
+        <input class="file-input file-input-bordered w-full mb-4" type="file" id="pdfFile" accept=".pdf" />
+        <button id="uploadButton" class="btn btn-primary w-full max-w-xs mb-4">Upload & Process</button>
+        <div id="uploadedFileName" class="text-success font-semibold"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="chatSection" class="hidden flex flex-col h-screen w-full">
+    <div class="navbar bg-neutral text-neutral-content justify-between px-4">
+      <a class="text-lg font-bold">Talk2PDF</a>
+      <div>
+        <button id="historyButton" class="btn btn-outline btn-accent btn-sm">Show History</button>
+        <button id="historyButtondel" class="btn btn-outline btn-accent btn-sm">Delete History</button>
+      </div>
+
+    </div>
+
+    <div id="chatArea" class="flex flex-col p-4 space-y-2 bg-base-100"></div>
+
+    <div id="historyPanel" class="hidden p-4 bg-base-200 text-sm rounded-lg mx-4 mt-2 overflow-y-auto"></div>
+
+    <div class="question p-4 bg-base-200 flex items-center gap-2">
+      <input id="questionInput" type="text" class="input input-bordered w-full" style="border-radius: 10px;" placeholder="Type your question..." />
+      <button id="sendButton" class="btn btn-primary">Send</button>
+    </div>
+  </div>
+
+
+ <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
