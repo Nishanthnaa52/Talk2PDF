@@ -46,7 +46,7 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # --- Core LangChain Logic ---
-def setup_qa_system(file_path: str, embedding_model: str = "models/embedding-001", chat_model: str = "gemini-pro"):
+def setup_qa_system(file_path: str, embedding_model: str = "models/embedding-001", chat_model: str = "gemini-1.0-pro"):
     """Sets up the QA system for a given PDF file."""
     try:
         print(f"Processing document: {file_path}")
@@ -146,7 +146,7 @@ def upload_file():
 
             # Process the PDF and create the QA chain
             # Use a robust model like gemini-1.5-pro-latest if available and suitable
-            new_qa_chain = setup_qa_system(filepath, chat_model="gemini-1.5-pro-latest")
+            new_qa_chain = setup_qa_system(filepath, chat_model="gemini-1.5-flash")
 
             if new_qa_chain:
                 # Store the chain (replace the existing one in this simple setup)
