@@ -33,7 +33,7 @@
   background-color: #34495e;
   color: white;
   align-self: flex-start;
-  margin-right: 0;
+  margin-right: 25%;
 }
 
 #uploadContainer {
@@ -97,3 +97,132 @@
   margin-right: auto;
 }
 
+/* --- Image Sizing --- */
+.image-grid-item img,
+.chat-image img {
+  max-height: 300px; /* Adjust as needed */
+  width: auto;
+  margin: 0 auto; /* Center the image */
+  border-radius: 0.5rem;
+}
+
+
+/* --- Markdown Formatting --- */
+
+/* Style the container for AI messages */
+.message-ai {
+  text-align: left;
+}
+
+/* Standard paragraph */
+.message-ai p {
+  margin-bottom: 0.75rem; /* 12px */
+  line-height: 1.6;
+}
+
+/* Headings */
+.message-ai h1,
+.message-ai h2,
+.message-ai h3 {
+  margin-top: 1.5rem;    /* 24px */
+  margin-bottom: 1rem; /* 16px */
+  font-weight: 600;
+  line-height: 1.3;
+}
+.message-ai h1 { font-size: 1.5em; }   /* 24px */
+.message-ai h2 { font-size: 1.25em; }  /* 20px */
+.message-ai h3 { font-size: 1.1em; }   /* 17.6px */
+
+/* Lists */
+.message-ai ul,
+.message-ai ol {
+  margin-bottom: 1rem; /* 16px */
+  padding-left: 1.5rem; /* 24px */
+}
+.message-ai li {
+  margin-bottom: 0.5rem; /* 8px */
+}
+.message-ai li > p {
+  margin-bottom: 0.5rem; /* In case paragraphs are nested in list items */
+}
+
+/* Blockquotes */
+.message-ai blockquote {
+  margin: 0 0 1rem 0;
+  padding: 0.5rem 1rem; /* 8px 16px */
+  border-left: 4px solid hsl(var(--b2)); /* Use theme border color */
+  background-color: hsl(var(--b1)); /* Use theme background color */
+  color: hsl(var(--bc) / 0.7); /* Use theme text color with opacity */
+}
+
+/* Code blocks */
+.message-ai pre {
+  margin-bottom: 1rem; /* 16px */
+  padding: 1rem;       /* 16px */
+  border-radius: 0.5rem; /* 8px */
+  background-color: hsl(var(--b2)); /* Use theme border color */
+  color: hsl(var(--bc));
+  white-space: pre-wrap; /* Wrap long lines */
+  word-wrap: break-word;
+  font-size: 0.9em;
+}
+
+/* Inline code */
+.message-ai code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: hsl(var(--b2));
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.message-ai pre code {
+  padding: 0;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Tables */
+.message-ai table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+}
+.message-ai th,
+.message-ai td {
+  padding: 0.75rem;
+  border: 1px solid hsl(var(--b2));
+}
+.message-ai th {
+  font-weight: 600;
+  background-color: hsl(var(--b1));
+}
+
+/* Horizontal Rule */
+.message-ai hr {
+  border-top: 1px solid hsl(var(--b2));
+  margin: 2rem 0;
+}
+
+/* Apply same styles to history panel */
+.history-item div {
+  text-align: left;
+}
+.history-item p { margin-bottom: 0.75rem; line-height: 1.6; }
+.history-item h1, .history-item h2, .history-item h3 { margin-top: 1.5rem; margin-bottom: 1rem; font-weight: 600; line-height: 1.3; }
+.history-item h1 { font-size: 1.5em; }
+.history-item h2 { font-size: 1.25em; }
+.history-item h3 { font-size: 1.1em; }
+.history-item ul, .history-item ol { margin-bottom: 1rem; padding-left: 1.5rem; }
+.history-item li { margin-bottom: 0.5rem; }
+.history-item li > p { margin-bottom: 0.5rem; }
+.history-item blockquote { margin: 0 0 1rem 0; padding: 0.5rem 1rem; border-left: 4px solid hsl(var(--b2)); background-color: hsl(var(--b1)); color: hsl(var(--bc) / 0.7); }
+.history-item pre { margin-bottom: 1rem; padding: 1rem; border-radius: 0.5rem; background-color: hsl(var(--b2)); color: hsl(var(--bc)); white-space: pre-wrap; word-wrap: break-word; font-size: 0.9em; }
+.history-item code { padding: 0.2em 0.4em; margin: 0; font-size: 85%; background-color: hsl(var(--b2)); border-radius: 6px; font-family: monospace; }
+.history-item pre code { padding: 0; background-color: transparent; font-size: inherit; color: inherit; }
+.history-item table { width: 100%; margin-bottom: 1rem; border-collapse: collapse; }
+.history-item th, .history-item td { padding: 0.75rem; border: 1px solid hsl(var(--b2)); }
+.history-item th { font-weight: 600; background-color: hsl(var(--b1)); }
+.history-item hr { border-top: 1px solid hsl(var(--b2)); margin: 2rem 0; }

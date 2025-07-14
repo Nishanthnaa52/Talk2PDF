@@ -21,7 +21,11 @@
 </head>
 
 <body class="min-h-screen flex flex-col">
+
+  <!-- Main section -->
   <div id="uploadContainer" class="flex flex-col items-center justify-center p-8 w-full h-full bg-base-100">
+
+    <!-- Title SVG -->
     <svg width="450" height="150" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -40,6 +44,7 @@
       </text>
     </svg>
 
+    <!-- Pdf upload area -->
     <div class="bg-base-200 p-6 rounded-lg shadow-lg w-full max-w-lg border-2 border-primary">
       <header class="text-center mb-6"></header>
 
@@ -50,34 +55,67 @@
         </div>
 
         <input class="file-input file-input-bordered w-full mb-4" type="file" id="pdfFile" accept=".pdf" />
-        <button id="uploadButton" class="btn btn-primary w-full max-w-xs mb-4">Upload & Process</button>
+
+        <div class="form-control mb-4">
+          <label class="label cursor-pointer pr-10">
+            <span class="label-text">Text-Only Chat</span> 
+            <input type="radio" name="chat_type" class="radio checked:bg-blue-500" value="text_only" checked />
+          </label>
+          <label class="label cursor-pointer">
+            <span class="label-text">Text & Image Chat</span> 
+            <input type="radio" name="chat_type" class="radio checked:bg-red-500" value="text_and_image" />
+          </label>
+        </br>
+          <p class="text-xs text-base-content/60 mt-1 pt-5">Note: Text & Image processing may take longer.</p>
+        </div>
+
+        <button id="uploadButton" class="btn btn-primary w-full max-w-xs mb-4">Upload & Process</button> <br/>
+        <button id="skip-view" class="text-gray-500 cursor-pointer">Skip to View</button>
         <div id="uploadedFileName" class="text-success font-semibold"></div>
       </div>
+
     </div>
+
   </div>
 
+  <!-- Chat section -->
   <div id="chatSection" class="hidden flex flex-col h-screen w-full">
-    <div class="navbar bg-neutral text-neutral-content justify-between px-4">
-      <a class="text-lg font-bold">Talk2PDF</a>
-      <div>
-        <button id="historyButton" class="btn btn-outline btn-accent btn-sm">Show History</button>
-        <button id="historyButtondel" class="btn btn-outline btn-accent btn-sm">Delete History</button>
-      </div>
 
+    <!-- Navbar -->
+    <div class="navbar bg-neutral text-neutral-content justify-between px-4">
+      <div>
+        <button id="backToBtn" class="text-gray-500 cursor-pointer">Back to Upload</button>
+      </div>
+      <a class="text-lg font-bold">Talk2PDF</a>
+      <div class="flex gap-2">
+        <button id="toggleImagesButton" class="btn btn-outline btn-info btn-sm">Show Images</button>
+        <button id="historyButton" class="btn btn-outline btn-accent btn-sm">Show History</button>
+        <button id="historyButtondel" class="btn btn-outline btn-error btn-sm">Delete History</button>
+      </div>
     </div>
 
+    <!-- Chat area -->
     <div id="chatArea" class="flex flex-col p-4 space-y-2 bg-base-100"></div>
 
+    <!-- Image display area -->
+    <div id="image-container" class="hidden p-4 bg-base-200 text-sm rounded-lg mx-4 mt-2 overflow-y-auto">
+        <h2 class="text-lg font-bold mb-4">Extracted Images</h2>
+        <div id="image-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+
+    <!-- chat history section -->
     <div id="historyPanel" class="hidden p-4 bg-base-200 text-sm rounded-lg mx-4 mt-2 overflow-y-auto"></div>
 
+    <!-- chat input area -->
     <div class="question p-4 bg-base-200 flex items-center gap-2">
       <input id="questionInput" type="text" class="input input-bordered w-full" style="border-radius: 10px;" placeholder="Type your question..." />
       <button id="sendButton" class="btn btn-primary">Send</button>
     </div>
+
   </div>
 
 
- <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/script.js') }}"></script> 
 
 </body>
 </html>

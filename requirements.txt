@@ -8,3 +8,7 @@ python-dotenv
 tiktoken
 langchain-community
 werkzeug
+PyMuPDF
+Pillow
+imagehash
+numpy
