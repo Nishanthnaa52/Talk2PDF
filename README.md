@@ -10,12 +10,20 @@ Talk2PDF is an intelligent web application that allows you to have interactive c
 
 This application is built with Flask for the backend, LangChain for orchestrating the language model interactions, and Google's Gemini models for state-of-the-art text and vision understanding.
 
+> [!WARNING]
+> ## ⚠️ Disclaimer: For Demonstration Purposes Only
+> This application is intended for demonstration and personal use. It is **not suitable for a production environment or multi-user setup** due to the following simplifications:
+> - **Global State:** The application uses a single global variable to store the chat model. This means if multiple users upload PDFs at the same time, their sessions will overwrite each other.
+> - **File Handling:** The server cleans up all previously uploaded PDFs and extracted images upon a new upload. This is not suitable for concurrent users.
+> - **Security:** The default Flask `SECRET_KEY` is hardcoded and must be changed for any real deployment.
+
 ## Features
 
 - **Interactive Chat Interface:** Ask questions in natural language and get responses in real-time.
 - **PDF Content Analysis:** The system processes the entire text content of your uploaded PDF to provide comprehensive answers.
 - **Image Understanding:** (Optional) Extracts images from the PDF, analyzes them, and can answer questions about their content.
 - **Deduplication:** Intelligently detects and skips duplicate images within the PDF to save processing time.
+- **Chat History:** View your current conversation history.
 - **Easy Setup:** Get the application running with just a few simple commands.
 - **Secure API Key Handling:** Prompts for your API key if not found in the environment, ensuring it's not hard-coded.
 
@@ -79,6 +87,9 @@ This application requires a Google Gemini API key to function.
       ```
     *   **On-the-fly:** If you run the application without a `.env` file, it will automatically prompt you to enter the API key in the terminal.
 
+> [!IMPORTANT]
+> For security, it is also recommended to change the `SECRET_KEY` in the `app.py` file from its default value, especially if you plan to deploy the application.
+
 ## Usage
 
 1.  **Run the Flask application:**
@@ -101,8 +112,9 @@ This application requires a Google Gemini API key to function.
 
 - **Backend:** Flask
 - **AI Orchestration:** LangChain
-- **Language & Vision Models:** Google Gemini (via `langchain-google-genai`)
+- **Language & Vision Models:** Google Gemini (via `langchain-google-genai`). The app uses `gemini-1.5-flash` for both chat and image analysis.
 - **Vector Store:** FAISS (Facebook AI Similarity Search)
 - **PDF Processing:** PyMuPDF (fitz)
 - **Image Processing:** Pillow, imagehash
+- **Dependencies:** `numpy`, `tiktoken`
 - **Frontend:** HTML, CSS, JavaScript
